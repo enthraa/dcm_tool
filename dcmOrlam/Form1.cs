@@ -20,47 +20,52 @@ namespace dcmOrlam
 
 		private void button_VMAT_Click(object sender, EventArgs e)
 		{
-			
-			OpenFileDialog openFileDialog1 = new OpenFileDialog();
-			
-			String path = @"vaimg101.vaonc - vil.local\DICOM\RS2VARIAN\Import\";
 
-			openFileDialog1.InitialDirectory = path;
-			openFileDialog1.Filter = "dcm Files|*.dcm";
-			openFileDialog1.Title = "Select a dcm File";
+			OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+			//	DialogResult dr = this.openFileDialog1.ShowDialog();
+			openFileDialog1.Multiselect = true;
+
 
 			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-					string sourceFile = openFileDialog1.FileName;
+				foreach (String file in openFileDialog1.FileNames)
+				{
+					Console.WriteLine("Fichier : "+ file );
+					string sourceFile = file;
 					textBox_result.Text = sourceFile;
 					vidangeligne(sourceFile);
 					calculprescription(sourceFile);
-
-				   // status.ForeColor = System.Drawing.Color.Green;
-				   //status.Text = "Modification VMAT effectuée";
+					Console.WriteLine(" ");
+				};
 			}
 		}
+				
 		private void button_AutoBreast_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-			String path = @"\\vaimg101.vaonc - vil.local\DICOM\RS2VARIAN\Import\";
+			//	DialogResult dr = this.openFileDialog1.ShowDialog();
+			openFileDialog1.Multiselect = true;
 
-			openFileDialog1.InitialDirectory = path;
-			openFileDialog1.Filter = "dcm Files|*.dcm";
-			openFileDialog1.Title = "Select a dcm File";
 
 			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
-				string sourceFile = openFileDialog1.FileName;
-				textBox_result.Text = sourceFile;
-				vidangeligne(sourceFile);
-				calculprescription(sourceFile);
-				ajouttag(sourceFile);
-
-				//status.ForeColor = System.Drawing.Color.Red;
-				//status.Text = "Modification AutoBreast effectuée";
+				foreach (String file in openFileDialog1.FileNames)
+				{
+					Console.WriteLine("Fichier : " + file);
+					string sourceFile = file;
+					textBox_result.Text = sourceFile;
+					calculprescription(sourceFile);
+					ajouttag(sourceFile);
+					vidangeligne(sourceFile);
+				};
 			}
+		}
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			_writer = new TextBoxStreamWriter(textConsole);
+			Console.SetOut(_writer);
 		}
 
 		private void vidangeligne(String nom)
@@ -88,16 +93,14 @@ namespace dcmOrlam
 				{
 					sel.TableTopLateralPosition_[k].Data_.Clear();
 				}
-
-				Console.WriteLine("Les lignes 'Table TopVertical Position', 'Table Top Longitudinal Position' et 'TableTopLateralPosition' sont vide.");
+				Console.WriteLine("- Les lignes 'Table TopVertical Position', 'Table Top Longitudinal Position' et 'TableTopLateralPosition' sont vide.");
 			}
 			catch (NullReferenceException)
 			{
-				MessageBox.Show("Impossible de vider les lignes.", "Erreur", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+				MessageBox.Show("Impossible de vider les lignes pour le fichier " + nom, "Erreur", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 				status.ForeColor = System.Drawing.Color.Red;
-				status.Text = "Impossible de vider les lignes ";
+				status.Text = "Modification interrompu ";
 			}
-
 			dcm.Write(nom);
 		}
 		private void calculprescription(String nom)
@@ -112,9 +115,9 @@ namespace dcmOrlam
 
 				var DoseParSeance = PrescripDose / DoseFraction;
 
-				Console.WriteLine("Prescription Dose : " + PrescripDose);
-				Console.WriteLine("Dose par Seance :  " + DoseFraction);
-				Console.WriteLine("Fraction de la dose : " + DoseParSeance);
+				Console.WriteLine("- Prescription Dose : " + PrescripDose);
+				Console.WriteLine("- Dose par Seance :  " + DoseFraction);
+				Console.WriteLine("- Fraction de la dose : " + DoseParSeance);
 
 				var BeamDoseSpec = sel.BeamDoseSpecificationPoint_;
 
@@ -125,10 +128,12 @@ namespace dcmOrlam
 				{
 					sel.BeamDoseSpecificationPoint_[i].Data_.Clear();
 				}
-				Console.WriteLine("Les " + sel.BeamDoseSpecificationPoint_.Count + " champs 'Beam Dose Spécifation Point' sont maintenant vides ");
+				Console.WriteLine("- Les " + sel.BeamDoseSpecificationPoint_.Count + " champs 'Beam Dose Spécifation Point' sont maintenant vides ");
 
 				var numberDose = DoseParSeance / NbBeamDoseSpec;
+
 				Console.WriteLine("Nombre de dose: " + numberDose);
+
 
 				var beamdose = sel.BeamDose_;
 				for (int i = 0; i < beamdose.Count; i++)
@@ -141,9 +146,9 @@ namespace dcmOrlam
 			}
 			catch (NullReferenceException)
 			{
-				MessageBox.Show("Impossible de calculer la dose.","Erreur",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
+				MessageBox.Show("Impossible de calculer la dose pour le fichier "+ nom, "Erreur",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
 				status.ForeColor = System.Drawing.Color.Red;
-				status.Text = "Calcul de Dose Impossible";
+				status.Text = "Modification interrompu";
 			};
 			dcm.Write(nom);
 		}
@@ -164,16 +169,8 @@ namespace dcmOrlam
 			{
 				sel.ControlPointSequence_[i].Items[0].Add(refDoseRate);
 			}
+			Console.WriteLine("- Ajout du tag pour l'AutoBreast");
 			dcm.Write(nom);
 		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-			_writer = new TextBoxStreamWriter(textConsole);
-			Console.SetOut(_writer);
-		}
-		
-
-		
 	}
 }

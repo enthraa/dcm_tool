@@ -66,7 +66,6 @@
 			this.textBox_result.Name = "textBox_result";
 			this.textBox_result.Size = new System.Drawing.Size(562, 22);
 			this.textBox_result.TabIndex = 3;
-			
 			// 
 			// status
 			// 
@@ -76,7 +75,6 @@
 			this.status.Name = "status";
 			this.status.Size = new System.Drawing.Size(0, 17);
 			this.status.TabIndex = 4;
-			
 			// 
 			// pictureBox1
 			// 
@@ -93,6 +91,7 @@
 			this.textConsole.Location = new System.Drawing.Point(705, 32);
 			this.textConsole.Multiline = true;
 			this.textConsole.Name = "textConsole";
+			this.textConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textConsole.Size = new System.Drawing.Size(272, 232);
 			this.textConsole.TabIndex = 6;
 			// 
@@ -104,7 +103,6 @@
 			this.label1.Size = new System.Drawing.Size(147, 17);
 			this.label1.TabIndex = 7;
 			this.label1.Text = "Résultat Modification :";
-		
 			// 
 			// label3
 			// 
@@ -114,7 +112,6 @@
 			this.label3.Size = new System.Drawing.Size(111, 17);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "Nom du Fichier :";
-			
 			// 
 			// Form1
 			// 
