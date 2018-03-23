@@ -1,0 +1,14 @@
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\dcmOrlam.exe.config
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\dcmOrlam.exe
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\dcmOrlam.pdb
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\EvilDICOM.dll
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\System.ValueTuple.dll
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\bin\Release\System.ValueTuple.xml
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.Form1.resources
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.Properties.Resources.resources
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.csproj.GenerateResource.cache
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.csproj.CoreCompileInputs.cache
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.csproj.CopyComplete
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.exe
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.pdb
+C:\Users\Pierre\source\repos\dcmOrlam\dcmOrlam\obj\Release\dcmOrlam.csprojResolveAssemblyReference.cache
