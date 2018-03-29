@@ -12,6 +12,7 @@ namespace dcmOrlam
 	public partial class Form1 : Form
 	{
 		TextWriter _writer = null;
+		bool test = true;
 
 		public Form1()
 		{
@@ -20,23 +21,31 @@ namespace dcmOrlam
 
 		private void button_VMAT_Click(object sender, EventArgs e)
 		{
-
 			OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
 			//	DialogResult dr = this.openFileDialog1.ShowDialog();
 			openFileDialog1.Multiselect = true;
 
-
+			openFileDialog1.InitialDirectory = @"Desktop\OpenOffice 4.1.4 (fr) Installation Files";
 			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
 				foreach (String file in openFileDialog1.FileNames)
 				{
 					Console.WriteLine("Fichier : "+ file );
 					string sourceFile = file;
+					string NomFchier = openFileDialog1.SafeFileName;
 					textBox_result.Text = sourceFile;
 					vidangeligne(sourceFile);
 					calculprescription(sourceFile);
 					Console.WriteLine(" ");
+					
+					if (test==true)
+					{
+						status.ForeColor = System.Drawing.Color.Black;
+						status.Text = "";
+						status.Text = "Le fichier " + NomFchier + "a été modifié";
+					}
+					test = true;
 				};
 			}
 		}
@@ -47,6 +56,7 @@ namespace dcmOrlam
 
 			//	DialogResult dr = this.openFileDialog1.ShowDialog();
 			openFileDialog1.Multiselect = true;
+			openFileDialog1.InitialDirectory = "\\\vaimg101.vaonc-vil.local\\DICOM\\RS2VARIAN\\Import";
 
 
 			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -55,10 +65,19 @@ namespace dcmOrlam
 				{
 					Console.WriteLine("Fichier : " + file);
 					string sourceFile = file;
+					string NomFchier = openFileDialog1.SafeFileName;
 					textBox_result.Text = sourceFile;
+					vidangeligne(sourceFile);
 					calculprescription(sourceFile);
 					ajouttag(sourceFile);
-					vidangeligne(sourceFile);
+					
+					if (test == true)
+					{
+						status.ForeColor = System.Drawing.Color.Black;
+						status.Text = "";
+						status.Text = "Le fichier '" + NomFchier + "'a été modifié";
+					}
+					test = true;
 				};
 			}
 		}
@@ -100,6 +119,7 @@ namespace dcmOrlam
 				MessageBox.Show("Impossible de vider les lignes pour le fichier " + nom, "Erreur", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 				status.ForeColor = System.Drawing.Color.Red;
 				status.Text = "Modification interrompu ";
+				test = false;
 			}
 			dcm.Write(nom);
 		}
@@ -123,6 +143,7 @@ namespace dcmOrlam
 
 				// nombre de dose 
 				var NbBeamDoseSpec = sel.BeamDoseSpecificationPoint_.Count;
+				//var NbBeamDoseSpec = 3;
 
 				for (int i = 0; i < BeamDoseSpec.Count; i++)
 				{
@@ -130,17 +151,26 @@ namespace dcmOrlam
 				}
 				Console.WriteLine("- Les " + sel.BeamDoseSpecificationPoint_.Count + " champs 'Beam Dose Spécifation Point' sont maintenant vides ");
 
-				var numberDose = DoseParSeance / NbBeamDoseSpec;
+				var numberDose_nar = DoseParSeance / NbBeamDoseSpec;
+				var numberDose = Math.Round(numberDose_nar, 3);
 
 				Console.WriteLine("Nombre de dose: " + numberDose);
 
-
 				var beamdose = sel.BeamDose_;
+				var nbBeamDose = beamdose.Count-1;
 				for (int i = 0; i < beamdose.Count; i++)
 				{
 					for (int k = 0; i < beamdose.Count; i++)
 					{
 						sel.BeamDose_[i].Data_[k] = numberDose;
+
+						if (nbBeamDose == i)
+						{
+							var total = numberDose * nbBeamDose;
+							var totallast = DoseParSeance - total;
+							sel.BeamDose_[i].Data_[k] = totallast;
+						}
+						Console.WriteLine("Faisceau " + i +" : "+ sel.BeamDose_[i].Data_[k]);
 					}
 				}
 			}
@@ -149,6 +179,7 @@ namespace dcmOrlam
 				MessageBox.Show("Impossible de calculer la dose pour le fichier "+ nom, "Erreur",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
 				status.ForeColor = System.Drawing.Color.Red;
 				status.Text = "Modification interrompu";
+				test = false;
 			};
 			dcm.Write(nom);
 		}
@@ -171,6 +202,11 @@ namespace dcmOrlam
 			}
 			Console.WriteLine("- Ajout du tag pour l'AutoBreast");
 			dcm.Write(nom);
+		}
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

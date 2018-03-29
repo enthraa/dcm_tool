@@ -37,12 +37,13 @@
 			this.textConsole = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// button_VMAT
 			// 
-			this.button_VMAT.Location = new System.Drawing.Point(705, 270);
+			this.button_VMAT.Location = new System.Drawing.Point(708, 270);
 			this.button_VMAT.Name = "button_VMAT";
 			this.button_VMAT.Size = new System.Drawing.Size(133, 52);
 			this.button_VMAT.TabIndex = 0;
@@ -52,7 +53,7 @@
 			// 
 			// button_AutoBreast
 			// 
-			this.button_AutoBreast.Location = new System.Drawing.Point(844, 270);
+			this.button_AutoBreast.Location = new System.Drawing.Point(847, 270);
 			this.button_AutoBreast.Name = "button_AutoBreast";
 			this.button_AutoBreast.Size = new System.Drawing.Size(133, 51);
 			this.button_AutoBreast.TabIndex = 1;
@@ -62,7 +63,7 @@
 			// 
 			// textBox_result
 			// 
-			this.textBox_result.Location = new System.Drawing.Point(126, 285);
+			this.textBox_result.Location = new System.Drawing.Point(126, 308);
 			this.textBox_result.Name = "textBox_result";
 			this.textBox_result.Size = new System.Drawing.Size(562, 22);
 			this.textBox_result.TabIndex = 3;
@@ -71,7 +72,7 @@
 			// 
 			this.status.AutoSize = true;
 			this.status.ForeColor = System.Drawing.Color.Black;
-			this.status.Location = new System.Drawing.Point(123, 247);
+			this.status.Location = new System.Drawing.Point(9, 233);
 			this.status.Name = "status";
 			this.status.Size = new System.Drawing.Size(0, 17);
 			this.status.TabIndex = 4;
@@ -88,7 +89,7 @@
 			// 
 			// textConsole
 			// 
-			this.textConsole.Location = new System.Drawing.Point(705, 32);
+			this.textConsole.Location = new System.Drawing.Point(708, 32);
 			this.textConsole.Multiline = true;
 			this.textConsole.Name = "textConsole";
 			this.textConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -98,7 +99,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(702, 12);
+			this.label1.Location = new System.Drawing.Point(705, 12);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(147, 17);
 			this.label1.TabIndex = 7;
@@ -107,17 +108,29 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(9, 287);
+			this.label3.Location = new System.Drawing.Point(9, 308);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(111, 17);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "Nom du Fichier :";
 			// 
+			// label2
+			// 
+			this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.label2.Location = new System.Drawing.Point(9, 262);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(687, 40);
+			this.label2.TabIndex = 10;
+			this.label2.Text = "Il incombe à l\'utilisateur d\'effectuer toutes les vérifications de la conformité " +
+    "du fichier modifié par rapport à la dosimétrie initiale ";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(984, 334);
+			this.ClientSize = new System.Drawing.Size(995, 338);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textConsole);
@@ -127,7 +140,7 @@
 			this.Controls.Add(this.button_AutoBreast);
 			this.Controls.Add(this.button_VMAT);
 			this.Name = "Form1";
-			this.Text = "dcm Tool";
+			this.Text = "dcm Tool v2 29/03/18";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
@@ -145,6 +158,7 @@
 		private System.Windows.Forms.TextBox textConsole;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label2;
 	}
 }
 
