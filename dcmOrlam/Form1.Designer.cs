@@ -139,6 +139,9 @@
 			this.Controls.Add(this.textBox_result);
 			this.Controls.Add(this.button_AutoBreast);
 			this.Controls.Add(this.button_VMAT);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximumSize = new System.Drawing.Size(1013, 385);
+			this.MinimumSize = new System.Drawing.Size(1013, 385);
 			this.Name = "Form1";
 			this.Text = "dcm Tool v2 29/03/18";
 			this.Load += new System.EventHandler(this.Form1_Load);

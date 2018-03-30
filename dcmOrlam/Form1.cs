@@ -25,15 +25,15 @@ namespace dcmOrlam
 
 			//	DialogResult dr = this.openFileDialog1.ShowDialog();
 			openFileDialog1.Multiselect = true;
+			openFileDialog1.InitialDirectory = "\\\vaimg101.vaonc-vil.local\\DICOM\\RS2VARIAN\\Import";
 
-			openFileDialog1.InitialDirectory = @"Desktop\OpenOffice 4.1.4 (fr) Installation Files";
 			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
 				foreach (String file in openFileDialog1.FileNames)
 				{
-					Console.WriteLine("Fichier : "+ file );
 					string sourceFile = file;
 					string NomFchier = openFileDialog1.SafeFileName;
+					Console.WriteLine("Fichier : '"+ NomFchier+"' ");
 					textBox_result.Text = sourceFile;
 					vidangeligne(sourceFile);
 					calculprescription(sourceFile);
