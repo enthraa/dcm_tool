@@ -33,11 +33,13 @@
 			this.button_AutoBreast = new System.Windows.Forms.Button();
 			this.textBox_result = new System.Windows.Forms.TextBox();
 			this.status = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.textConsole = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -72,20 +74,10 @@
 			// 
 			this.status.AutoSize = true;
 			this.status.ForeColor = System.Drawing.Color.Black;
-			this.status.Location = new System.Drawing.Point(9, 233);
+			this.status.Location = new System.Drawing.Point(57, 223);
 			this.status.Name = "status";
 			this.status.Size = new System.Drawing.Size(0, 17);
 			this.status.TabIndex = 4;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(506, 162);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-			this.pictureBox1.TabIndex = 5;
-			this.pictureBox1.TabStop = false;
 			// 
 			// textConsole
 			// 
@@ -117,19 +109,43 @@
 			// label2
 			// 
 			this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.label2.Location = new System.Drawing.Point(9, 262);
+			this.label2.ForeColor = System.Drawing.Color.Red;
+			this.label2.Location = new System.Drawing.Point(60, 254);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(687, 40);
+			this.label2.Size = new System.Drawing.Size(636, 42);
 			this.label2.TabIndex = 10;
 			this.label2.Text = "Il incombe à l\'utilisateur d\'effectuer toutes les vérifications de la conformité " +
-    "du fichier modifié par rapport à la dosimétrie initiale ";
+    "du fichier modifié par rapport à la dosimétrie initiale. ";
 			this.label2.Click += new System.EventHandler(this.label2_Click);
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = global::dcmOrlam.Properties.Resources._1084583a;
+			this.pictureBox2.Location = new System.Drawing.Point(12, 254);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(42, 42);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox2.TabIndex = 11;
+			this.pictureBox2.TabStop = false;
+			this.pictureBox2.WaitOnLoad = true;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(506, 162);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox1.TabIndex = 5;
+			this.pictureBox1.TabStop = false;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(995, 338);
+			this.Controls.Add(this.pictureBox2);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label1);
@@ -143,8 +159,9 @@
 			this.MaximumSize = new System.Drawing.Size(1013, 385);
 			this.MinimumSize = new System.Drawing.Size(1013, 385);
 			this.Name = "Form1";
-			this.Text = "dcm Tool v1 30/03/18";
+			this.Text = "RS2EC v1.0 30/03/18";
 			this.Load += new System.EventHandler(this.Form1_Load);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -162,6 +179,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.PictureBox pictureBox2;
 	}
 }
 
