@@ -143,7 +143,7 @@
 			this.MaximumSize = new System.Drawing.Size(1013, 385);
 			this.MinimumSize = new System.Drawing.Size(1013, 385);
 			this.Name = "Form1";
-			this.Text = "dcm Tool v2 29/03/18";
+			this.Text = "dcm Tool v1 30/03/18";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);

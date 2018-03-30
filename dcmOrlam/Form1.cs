@@ -135,9 +135,9 @@ namespace dcmOrlam
 
 				var DoseParSeance = PrescripDose / DoseFraction;
 
-				Console.WriteLine("- Prescription Dose : " + PrescripDose);
-				Console.WriteLine("- Dose par Seance :  " + DoseFraction);
-				Console.WriteLine("- Fraction de la dose : " + DoseParSeance);
+				Console.WriteLine("- Dose totale prescrite : " + PrescripDose);
+				Console.WriteLine("- Nombre de séance :  " + DoseFraction);
+				Console.WriteLine("- Dose par séance : " + DoseParSeance);
 
 				var BeamDoseSpec = sel.BeamDoseSpecificationPoint_;
 
@@ -154,7 +154,7 @@ namespace dcmOrlam
 				var numberDose_nar = DoseParSeance / NbBeamDoseSpec;
 				var numberDose = Math.Round(numberDose_nar, 3);
 
-				Console.WriteLine("Nombre de dose: " + numberDose);
+				Console.WriteLine("- Pondération par faisceau : " + numberDose);
 
 				var beamdose = sel.BeamDose_;
 				var nbBeamDose = beamdose.Count-1;
